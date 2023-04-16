@@ -1,4 +1,6 @@
 import '../css/Controller.css'
+import React from "react";
+
 
 function GameController(){
     const moveUp = () => {};
@@ -13,17 +15,16 @@ function GameController(){
     };
     return (
         <div>
-            <p>GameController</p>
             <div className='controller'>
                 <div className='button-left'>
-                    <button className='up' onClick={moveUp}></button>
-                    <button className='down' onClick={moveDown}></button>
-                    <button className='left' onClick={moveLeft}></button>
-                    <button className='right' onClick={moveRight}></button>
+                    <button className='up' onClick={moveUp}>↑</button>
+                    <button className='down' onClick={moveDown}>↓</button>
+                    <button className='left' onClick={moveLeft}>←</button>
+                    <button className='right' onClick={moveRight}>→</button>
                 </div>
                 <div className='button-right'>
-                    <button onClick={gamestart}>start</button>
-                    <button onClick={gamereset}>reset</button>
+                    <button className='start-button' onClick={gamestart}>A</button>
+                    <button className='reset-button' onClick={gamereset}>B</button>
                 </div>
             </div>
         </div>

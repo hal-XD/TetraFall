@@ -1,4 +1,6 @@
 import '../css/Screen.css'
+import React from "react";
+
 
 interface GameScreenProps {
     board:string[][]

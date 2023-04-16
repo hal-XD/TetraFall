@@ -1,8 +1,8 @@
 .controller {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .controller .button-left {
@@ -17,15 +17,24 @@
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-template-rows: repeat(1, 1fr);
-  grid-gap: 5px;
+  transform: rotate(335deg);
+  grid-gap: 12px;
   margin-bottom: 10px;
 }
 
+.controller .button-right .start-button {
+  transform: rotate(-335deg);
+}
+
+.controller .button-right .reset-button {
+  transform: rotate(-335deg);
+}
 .controller button {
-  width: 45px;
-  height: 45px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   border: none;
+  margin: 1px;
   outline: none;
   cursor: pointer;
   background-color: #333;
