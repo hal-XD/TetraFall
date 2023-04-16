@@ -1,0 +1,43 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(22, 1fr);
+  gap: 0px;
+  width: 220px;
+  border: 1px solid black;
+}
+
+.grid-item {
+  width: 20px;
+  height: 20px;
+  border: 1px solid black;
+}
+
+.red {
+  background-color: red;
+}
+
+.green {
+  background-color: green;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.empty {
+  background-color: white;
+}
+
+.empty:after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: darkblue;
+}
+
+.centered {
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,60 @@
+.controller {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.controller .button-left {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-gap: 5px;
+  margin-bottom: 10px;
+}
+
+.controller .button-right {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  grid-gap: 5px;
+  margin-bottom: 10px;
+}
+
+.controller button {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: #333;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.controller button:hover {
+  background-color: #555;
+}
+
+.controller .up {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.controller .left {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.controller .down {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.controller .right {
+  grid-column: 3;
+  grid-row: 2;
+}
