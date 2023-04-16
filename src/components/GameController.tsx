@@ -1,6 +1,7 @@
 import '../css/Controller.css'
 import React,{Dispatch,SetStateAction} from "react";
 import { TetraFallAction, TetraFallActionType, TetraFallState } from '../reducers/TetraFallReducer';
+import { TetraFallBlockTypes } from '../constants/blocks';
 
 interface GameControllerProps {
     state:TetraFallState,
@@ -9,7 +10,7 @@ interface GameControllerProps {
 
 function GameController({state, dispatch}: GameControllerProps){
     const moveUp = () => {};
-    const moveDown = () => {};
+    const moveDown = () => {dispatch({type: TetraFallActionType.MoveDown})};
     const moveLeft = () => {};
     const moveRight = () => {};
     const gamestart = () => {
@@ -17,7 +18,19 @@ function GameController({state, dispatch}: GameControllerProps){
         const newBoard = [...state.board];
         newBoard[0][0] = 'red';
         newBoard[0][1] = 'red';
-        dispatch({type: TetraFallActionType.SetBoard, payload: newBoard})
+        const newCurrentBlock = {
+            type: TetraFallBlockTypes.Rectangle,
+            startCoordinate: {
+                x:0,y:0,
+            },
+            rotationState: 0,
+        }
+        const newState : TetraFallState = {
+            board: newBoard,
+            currentBlock: newCurrentBlock,
+        }
+        //dispatch({type: TetraFallActionType.SetBoard, payload: newBoard})
+        dispatch({type: TetraFallActionType.SetGameState, payload :newState})
     };
     const gamereset = () => {
         console.log('game reset!! play Tetra Fall!!');
