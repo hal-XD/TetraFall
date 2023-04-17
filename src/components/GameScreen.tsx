@@ -1,15 +1,18 @@
 import '../css/Screen.css'
+import React from "react";
+
+import { TetraFallState } from '../reducers/TetraFallReducer';
 
 interface GameScreenProps {
-    board:string[][]
+    state:TetraFallState,
 }
 
-function GameScreen({board}:GameScreenProps){
+function GameScreen({state}:GameScreenProps){
 
     return (
         <div className='centered'>
             <div className="grid-container">
-                {board.map((row,y) => 
+                {state.board.map((row,y) => 
                     row.map((color,x) => (
                         <div key={'${x}-${y}'} className={`grid-item ${color}`}></div>
                     )))}

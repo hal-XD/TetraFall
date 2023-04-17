@@ -1,6 +1,7 @@
-import React, {useState} from "react";
+import React, {useState, useReducer} from "react";
 import TetraFallBoard from "./TetraFallBoard";
 import TetraFallInfo from "./TetraFallInfo";
+import { gameReducer,GenerateInitialState } from "../reducers/TetraFallReducer";
 
 /**
  * TetraFall全体を管理するコンポーネント 
@@ -15,7 +16,8 @@ function TetraFall() {
     // 現在のボードの状態を管理する。
     //  board[x][y] x行y列のゲームボード
     //    マスの色を管理する。(x色ならブロックなし)
-    const [gameBoard, setGameBoard] = useState(Array(22).fill("").map(() => Array(10).fill("-")));
+    // const [gameBoard, setGameBoard] = useState(Array(22).fill("").map(() => Array(10).fill("-")));
+    const [gameState, dispatch] = useReducer(gameReducer,GenerateInitialState());
     // 現在操作しているブロックの管理をする
     //  色、座標
     const style = {
@@ -25,7 +27,7 @@ function TetraFall() {
     }
     return (
         <div style={style}>
-            <TetraFallBoard board={gameBoard}></TetraFallBoard>
+            <TetraFallBoard state={gameState} dispatch={dispatch}></TetraFallBoard>
             <TetraFallInfo></TetraFallInfo>
         </div>
     )
