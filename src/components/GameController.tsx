@@ -1,5 +1,5 @@
 import '../css/Controller.css'
-import React,{Dispatch,SetStateAction} from "react";
+import React,{Dispatch,SetStateAction, useCallback} from "react";
 import { TetraFallAction, TetraFallActionType, TetraFallState } from '../reducers/TetraFallReducer';
 import { TetraFallBlockTypes } from '../constants/blocks';
 
@@ -9,11 +9,16 @@ interface GameControllerProps {
 }
 
 function GameController({state, dispatch}: GameControllerProps){
+    console.log("rerender GameController!");
     const moveUp = () => {};
-    const moveDown = () => {dispatch({type: TetraFallActionType.MoveDown})};
+    const moveDown = useCallback(() => {
+        console.log("in useCallback. movedown.")
+        dispatch({type: TetraFallActionType.MoveDown})}
+    , [dispatch]);
     const moveLeft = () => {};
     const moveRight = () => {};
     const gamestart = () => {
+        // to-do: dispathcに移動させる?
         console.log('game start!! play Tetra Fall!!')
         const newBoard = [...state.board];
         newBoard[0][0] = 'red';
@@ -26,13 +31,16 @@ function GameController({state, dispatch}: GameControllerProps){
             rotationState: 0,
         }
         const newState : TetraFallState = {
+            ...state,
             board: newBoard,
             currentBlock: newCurrentBlock,
         }
         //dispatch({type: TetraFallActionType.SetBoard, payload: newBoard})
+        console.log("newState.",newState);
         dispatch({type: TetraFallActionType.SetGameState, payload :newState})
     };
     const gamereset = () => {
+        // to-do: dispathcに移動させる?
         console.log('game reset!! play Tetra Fall!!');
         const newBoard = Array(22).fill("").map(() => Array(10).fill("-"));
         dispatch({type: TetraFallActionType.SetBoard, payload: newBoard})

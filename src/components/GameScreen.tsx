@@ -14,7 +14,7 @@ function GameScreen({state}:GameScreenProps){
             <div className="grid-container">
                 {state.board.map((row,y) => 
                     row.map((color,x) => (
-                        <div key={'${x}-${y}'} className={`grid-item ${color}`}></div>
+                        <div key={`${y}-${x}`} className={`grid-item ${color}`}></div>
                     )))}
             </div>
         </div>
